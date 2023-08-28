@@ -1,0 +1,34 @@
+{
+    "printWidth": 120,
+    "tabWidth": 4,
+    "wrapAttributes": "auto",
+    "wrapAttributesMinAttrs": 2,
+    "sortTailwindcssClasses": true,
+    "sortHtmlAttributes": "none",
+    "noPhpSyntaxCheck": false,
+    "indentInnerHtml": true,
+    "extraLiners": "",
+    "plugins": ["@shufo/prettier-plugin-blade", "@prettier/plugin-php"],
+    "overrides": [
+        {
+            "files": ["*.blade.php"],
+            "options": {
+                "parser": "blade",
+                "tabWidth": 4
+            }
+        },
+        {
+            "files": ["*.js", "*.vue"],
+            "options": {
+                "tabWidth": 2
+            }
+        },
+        {
+            "files": ["*.php"],
+            "options": {
+                "parser": "php",
+                "tabWidth": 4
+            }
+        }
+    ]
+}
