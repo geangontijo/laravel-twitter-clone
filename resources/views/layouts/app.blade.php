@@ -11,6 +11,13 @@
 
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+        <script>
+            window.User = {
+                id: {{ optional(Auth::user())->id }},
+                avatar: '{{ optional(Auth::user())->avatar() }}'
+            }
+        </script>
     </head>
     <body>
         <div id="app">

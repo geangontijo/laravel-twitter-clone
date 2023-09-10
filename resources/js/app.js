@@ -6,6 +6,7 @@
 
 import "./bootstrap";
 import { createApp } from "vue";
+import { Store } from "vuex";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -42,4 +43,25 @@ Object.entries(import.meta.glob("./**/*.vue", { eager: true })).forEach(([path, 
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount("#app");
+import timeline from "./store/timeline";
+import { ObserveVisibility } from "vue-observe-visibility";
+const store = new Store({
+  modules: {
+    timeline,
+  },
+});
+
+app.config.globalProperties.$user = window.User;
+
+app
+  .use(store)
+  .directive("observe-visibility", {
+    beforeMount(el, binding, vnode) {
+      // vnode.appContext;
+      vnode.context = binding.instance;
+      ObserveVisibility.bind(el, binding, vnode);
+    },
+    updated: ObserveVisibility.update,
+    unmounted: ObserveVisibility.unbind,
+  })
+  .mount("#app");

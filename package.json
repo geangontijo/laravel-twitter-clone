@@ -20,5 +20,9 @@
         "tailwindcss": "^3.3.3",
         "vite": "^4.0.0",
         "vue": "^3.2.37"
+    },
+    "dependencies": {
+        "vue-observe-visibility": "^1.0.0",
+        "vuex": "^4.1.0"
     }
 }
